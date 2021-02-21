@@ -1,0 +1,72 @@
+Ejercicio guiada : 
+---------------------
+
+Un comercio que tiene un stand en una feria registra en una tabla llamada "visitantes" algunos 
+datos de las personas que visitan o compran en su stand para luego enviarle publicidad de sus 
+productos.
+
+1- Elimine la tabla "visitantes", si existe.
+
+2- Créela con la siguiente estructura:
+ create table visitantes(
+  nombre varchar(30),
+  edad tinyint unsigned,
+  sexo char(1),
+  domicilio varchar(30),
+  ciudad varchar(20),
+  telefono varchar(11),
+  montocompra decimal (6,2) unsigned
+ );
+
+3- Ingrese algunos registros:
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Susana Molina', 28,'f','Colon 123','Cordoba',null,45.50); 
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Marcela Mercado',36,'f','Avellaneda 345','Cordoba','4545454',0);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Alberto Garcia',35,'m','Gral. Paz 123','Alta Gracia','03547123456',25); 
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Teresa Garcia',33,'f','Gral. Paz 123','Alta Gracia','03547123456',0);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Roberto Perez',45,'m','Urquiza 335','Cordoba','4123456',33.20);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Marina Torres',22,'f','Colon 222','Villa Dolores','03544112233',25);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Julieta Gomez',24,'f','San Martin 333','Alta Gracia','03547121212',53.50);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Roxana Lopez',20,'f','Triunvirato 345','Alta Gracia',null,0);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Liliana Garcia',50,'f','Paso 999','Cordoba','4588778',48);
+ insert into visitantes (nombre,edad, sexo,domicilio,ciudad,telefono,montocompra)
+  values ('Juan Torres',43,'m','Sarmiento 876','Cordoba','4988778',15.30);
+
+4- Solicite la cantidad de visitantes al stand (10 registros):
+ select count(*) from visitantes;
+
+5- Solicite la cantidad de visitantes que tienen teléfono (valor no nulo) (8 registros):
+ select count(telefono)
+  from visitantes;
+
+Recuerde que no es lo mismo contar todos los registros que contar los que tienen teléfono, porque 
+en el segundo caso no considera los registros con valor nulo en el campo "telefono".
+
+6- Muestre la cantidad de visitantes de sexo masculino que acudieron al stand (3):
+ select count(*) from visitantes
+  where sexo='m';
+
+7- Muestre la cantidad de mujeres mayores de 25 años que acudieron al stand (4):
+ select count(*) from visitantes
+  where sexo='f' and
+  edad>25;
+
+8- Muestre la cantidad de visitantes que no son de "Cordoba" (5):
+ select count(*) from visitantes
+  where ciudad<>'Cordoba';
+
+9- Muestre la cantidad de visitantes que realizaron alguna compra (7):
+ select count(*) from visitantes
+  where montocompra<>0;
+
+10- Muestre la cantidad de visitantes que no realizaron compras (3):
+ select count(*) from visitantes
+  where montocompra=0;

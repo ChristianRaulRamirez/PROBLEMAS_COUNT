@@ -1,0 +1,98 @@
+Ejercicio 1 : 
+---------------
+Una pequeña biblioteca de barrio registra los préstamos de sus libros en una tabla 
+llamada "prestamos".
+
+1- Elimine la tabla "prestamos" si existe.
+
+2- Cree la tabla:
+ create table prestamos(
+  titulo varchar(40) not null,
+  documento char(8) not null,
+  fechaprestamo date not null,
+  fechadevuelto date
+ );
+
+La tabla registra el documento del socio a quien se le presta el libro, el título del libro 
+prestado, la fecha de préstamo y la fecha en que se devuelve.
+
+3- Ingrese los siguientes registros:
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Manual de 1 grado','23456789','2006-07-10','2006-07-12');
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('El aleph','22245679','2006-07-15',null);
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Alicia en el pais de las maravillas','24456789','2006-07-20','2006-07-22');
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Manual de biologia','25456789','2006-08-14',null);
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Manual de geografia 5 grado','27456789','2006-08-21','2006-08-25');
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Antologia poetica','28456789','2006-08-26','2006-08-27');
+ insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Manual de 1 grado','23456789','2006-08-26','2006-08-28');
+insert into prestamos (titulo,documento,fechaprestamo,fechadevuelto)
+  values ('Manual de 1 grado','30456789','2006-09-01','2006-09-03');
+
+4- Cuente la cantidad de veces que se prestó el libro "Manual de 1 grado":
+ select count(*)
+  from prestamos
+  where titulo='Manual de 1 grado';
+
+5- Cuente la cantidad de libros devueltos (contando por fechadevuelto):
+ select count(fechadevuelto)
+  from prestamos;
+
+6- Cuente la cantidad de veces que se le prestaron libros a la persona con documento "23456789":
+ select count(*)
+  from prestamos
+  where documento='23456789';
+
+7- Cuente la cantidad de libros prestados en el mes de agosto:
+ select count(*)
+  from prestamos
+  where month(fechaprestamo)=8;
+
+
+================================================================================================
+
+
+
+Ejercicio 2 :
+----------------
+Trabaje con la tabla "agenda" que registra la información referente a sus amigos.
+
+1- Elimine la tabla si existe.
+
+2- Cree la tabla con la siguiente estructura:
+ create table agenda(
+  apellido varchar(30),
+  nombre varchar(20) not null,
+  domicilio varchar(30),
+  telefono varchar(11),
+  mail varchar(30)
+ );
+
+3- Ingrese los siguientes registros:
+ insert into agenda values('Perez','Juan','Sarmiento 345','4334455','juancito@gmail.com');
+ insert into agenda values('Garcia','Ana','Urquiza 367','4226677','anamariagarcia@hotmail.com');
+ insert into agenda values('Lopez','Juan','Avellaneda 900',null,'juancitoLopez@gmail.com');
+ insert into agenda values('Juarez','Mariana','Sucre 123','0525657687','marianaJuarez2@gmail.com');
+ insert into agenda values('Molinari','Lucia','Peru 1254','4590987','molinarilucia@hotmail.com');
+ insert into agenda values('Ferreyra','Patricia','Colon 1534','4585858',null);
+ insert into agenda values('Perez','Susana','San Martin 333',null,null);
+ insert into agenda values('Perez','Luis','Urquiza 444','0354545256','perezluisalberto@hotmail.com');
+ insert into agenda values('Lopez','Maria','Salta 314',null,'lopezmariayo@gmail.com');
+
+4- Cuente cuántos de sus amigos tienen mail:
+ select count(mail)
+  from agenda;
+
+5-Cuente cuántos de sus amigos tienen teléfono:
+ select count(telefono)
+  from agenda;
+
+6- Cuente cuántos se apellidan "Perez":
+ select count(*)
+  from agenda
+  where apellido like '%Perez%';
